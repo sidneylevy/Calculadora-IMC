@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora IMC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculadora de IMC</h1>
+    <div class="container">
+        <div class="inputSpace">
+            <p>Peso:
+                <input type="number" name="peso" id="npeso">
+            </p>
+            <p>Altura:
+                <input type="number" name="altura" id="nalt">
+        </div>
+            <p>
+                <button type="button" onclick="Calcular()">Calcular</button>
+            </p>
+        <div class="res hide"></div>
+    </div>
+
+    <script>
+        function Calcular() {
+            let peso = document.querySelector('input#npeso')
+            let altura = document.querySelector('input#nalt')
+            let res = document.querySelector('.res')
+            
+            
+            if (peso.value.length == 0 || altura.value.length == 0) {
+                alert('Error! Preencha todos os campos.')
+            }else {
+
+                
+                let p = Number(peso.value)
+                let a = Number(altura.value) 
+                let r = Number(0)
+                
+                r = p / (a*a)
+
+                res.classList.remove('hide')
+
+                if(r <= 25) {
+                    res.innerHTML = `Seu IMC é ${r.toFixed(2)}.Peso normal`
+                
+                }else if (r <= 30) {
+                    res.innerHTML = `Seu IMC é ${r.toFixed(2)}. Sobrepeso`
+
+                }else if(r <= 40) {
+                    res.innerHTML = `Seu IMC é ${r.toFixed(2)}. Obesidade grau I`
+
+                }else if (r <= 50) {
+                    res.innerHTML = `Seu IMC é ${r.toFixed(2)}. Obesidade grau II`
+                
+                }else if(r <= 60) {
+                    res.innerHTML = `Seu IMC é ${r.toFixed(2)}. Obesidade grau III`
+                }
+
+            }
+
+        }
+    </script>   
+</body>
+</html>
+            
+
+                
+
